@@ -1,0 +1,45 @@
+<%- include("partials/header.ejs") %>
+
+<body>
+    <h1> Quote Finder </h1>
+    
+    <form action="/searchByKeyword">
+        Keyword:
+        <input type="text" name="keyword">
+        <button>Search by Keyword</button>
+    </form>
+    <br>
+    <form action="/searchByAuthor">
+        <select name="authorId">
+            <% for (author of authors) { %>
+                <option value="<%= author.authorId %>">
+                    <%=author.firstName%> <%=author.lastName%>
+                </option>
+            <% } %>
+        </select>
+        <button>Search by Author</button>
+    </form>
+    <br>
+    <!-- Search by Category -->
+    <form action="/searchByCategory">
+        <select name="category" id="categoryMenu">
+            <% for (cat of categories) { %>
+                <option value="<%= cat.category %>"><%= cat.category %></option>
+            <% } %>
+        </select>
+        <button>Search by Category</button>
+    </form>
+    <br>
+    <form action="/searchByLikes">
+        Min Likes:
+        <input type="number" name="minLikes" min="0">
+        Max Likes:
+        <input type="number" name="maxLikes" min="0">
+        <button>Search by Likes</button>
+    </form>
+<br>
+
+
+    <%- include("partials/footer.ejs") %>
+</body>
+</html>
